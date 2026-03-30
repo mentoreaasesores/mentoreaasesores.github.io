@@ -13,72 +13,58 @@
         .tab-content.active { display: block; animation: fadeIn 0.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        .book-card {
-            transition: all 0.3s ease;
-        }
-        .book-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        /* Protección visual de autoría */
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
+        .book-card { transition: all 0.3s ease; }
+        .book-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+
         .book-cover {
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            text-align: center;
-            color: white;
-            border-radius: 0.75rem 0.75rem 0 0;
-            position: relative;
-            overflow: hidden;
+            height: 300px; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; padding: 2rem; text-align: center; color: white;
+            border-radius: 0.75rem 0.75rem 0 0; position: relative; overflow: hidden;
         }
         .book-cover::after {
-            content: "";
-            position: absolute;
-            left: 8px;
-            top: 0; bottom: 0; width: 18px;
-            background: rgba(255,255,255,0.2);
-            box-shadow: 3px 0 6px rgba(0,0,0,0.2);
+            content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 18px;
+            background: rgba(255,255,255,0.2); box-shadow: 3px 0 6px rgba(0,0,0,0.2);
         }
-        .book-title {
-            font-family: 'ui-sans-serif', system-ui;
-            line-height: 1.1;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
+        .book-title { font-family: 'ui-sans-serif', system-ui; line-height: 1.1; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans no-select" oncontextmenu="return false;">
 
     <!-- Navegación -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="showTab('inicio')">
-                    <img src="IMG_20260319_152251_656.jpg" alt="Mentórea Logo" class="h-16 w-auto object-contain" onerror="this.src='https://ui-avatars.com/api/?name=M+A&background=1a2a6c&color=fff'">
+                    <img src="IMG_20260319_152251_656.jpg" alt="Mentórea Logo" class="h-16 w-auto object-contain">
                     <span class="text-xl font-bold text-blue-900 hidden sm:inline">Mentórea Asesores</span>
                 </div>
                 <div class="hidden md:flex space-x-5 items-center text-xs font-bold uppercase">
                     <button onclick="showTab('inicio')" class="hover:text-red-600 transition">Inicio</button>
                     <button onclick="showTab('sobre-mi')" class="hover:text-red-600 transition">Sobre Mí</button>
                     <button onclick="showTab('biblioteca')" class="hover:text-red-600 transition">Libros</button>
-                    <button onclick="showTab('testimonios')" class="hover:text-red-600 transition">Éxitos</button>
-                    <button onclick="showTab('pagos')" class="hover:text-red-600 transition">Pagos</button>
+                    <button onclick="showTab('pagos')" class="hover:text-red-600 transition">Inversión</button>
                     <button onclick="showTab('registro')" class="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition shadow-lg">Iniciar Proyecto</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- SECCIÓN INICIO -->
+    <!-- INICIO -->
     <div id="inicio" class="tab-content active">
         <div class="gradient-brand text-white py-24 px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Dra. Karina Quintero Navas</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-95">Liderazgo y Rigor Científico en Metodología para Proyectos de Investigación de Alto Impacto.</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 uppercase">Mentórea Asesores</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-95">Liderazgo y Rigor Científico bajo el método <br><strong>"Educomunicación: ciencia y arte"</strong></p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://wa.me/584143304905?text=Hola%20Dra.%20Karina,%20deseo%20información%20sobre%20Mentórea%20Asesores" target="_blank" class="bg-green-500 text-white px-8 py-4 rounded-full font-bold shadow-xl flex items-center gap-2 hover:bg-green-600 transition">
-                    Contactar por WhatsApp
+                <a href="https://wa.me/584143304905" target="_blank" class="bg-green-500 text-white px-8 py-4 rounded-full font-bold shadow-xl flex items-center gap-2 hover:bg-green-600 transition">
+                    Agendar Consultoría por WhatsApp
                 </a>
             </div>
         </div>
@@ -86,240 +72,91 @@
         <div class="max-w-7xl mx-auto py-16 px-4 grid md:grid-cols-3 gap-8 text-center">
             <div class="p-8 bg-white rounded-3xl shadow-sm border-b-4 border-blue-900">
                 <div class="text-4xl mb-4">🎓</div>
-                <h3 class="font-bold text-xl mb-2">Tutoría Doctoral</h3>
-                <p class="text-gray-600 text-sm">Acompañamiento científico desde el diseño hasta la defensa exitosa.</p>
+                <h3 class="font-bold text-xl mb-2 text-blue-900">Tutoría Doctoral</h3>
+                <p class="text-gray-600 text-sm italic">Acompañamiento científico desde el diseño hasta la defensa exitosa.</p>
             </div>
             <div class="p-8 bg-white rounded-3xl shadow-sm border-b-4 border-red-600">
                 <div class="text-4xl mb-4">🎨</div>
-                <h3 class="font-bold text-xl mb-2">Ciencia y Arte</h3>
-                <p class="text-gray-600 text-sm">Asesoría en proyectos creativos, estéticos y de comunicación.</p>
+                <h3 class="font-bold text-xl mb-2 text-red-600">Ciencia y Arte</h3>
+                <p class="text-gray-600 text-sm italic">Asesoría en proyectos creativos, estéticos y de comunicación social.</p>
             </div>
             <div class="p-8 bg-white rounded-3xl shadow-sm border-b-4 border-yellow-500">
                 <div class="text-4xl mb-4">📚</div>
-                <h3 class="font-bold text-xl mb-2">Sello Editorial</h3>
-                <p class="text-gray-600 text-sm">Transformamos tesis técnicas en libros de referencia con Ave Fénix.</p>
+                <h3 class="font-bold text-xl mb-2 text-yellow-600">Sello Editorial</h3>
+                <p class="text-gray-600 text-sm italic">Transformamos tesis académicas en libros de referencia con Ave Fénix.</p>
             </div>
         </div>
     </div>
 
-    <!-- SECCIÓN SOBRE MÍ ACTUALIZADA -->
+    <!-- SOBRE MÍ -->
     <div id="sobre-mi" class="tab-content max-w-7xl mx-auto py-16 px-4">
         <div class="flex flex-col lg:flex-row items-center gap-12">
             <div class="lg:w-1/3 text-center">
-                <img src="Foto Dra Karina Quintero " alt="Dra. Karina Quintero" class="w-80 h-80 object-cover rounded-2xl border-4 border-blue-900 shadow-2xl mx-auto" onerror="this.src='https://ui-avatars.com/api/?name=Karina+Quintero&background=1a2a6c&color=fff&size=512'">
+                <img src="Foto Dra Karina Quintero " alt="Dra. Karina Quintero" class="w-80 h-80 object-cover rounded-2xl border-4 border-blue-900 shadow-2xl mx-auto">
                 <div class="mt-4 bg-blue-900 text-white px-6 py-2 rounded-full font-bold inline-block">PhD. Karina Quintero</div>
-                <div class="mt-6 space-y-3 text-left max-w-xs mx-auto">
-                    <div class="flex items-center gap-3 text-sm text-gray-700">
-                        <span class="text-red-600 font-bold">📧</span> mentoreaasesores@gmail.com
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-700">
-                        <span class="text-red-600 font-bold">📸</span> @metodolog_iay_estrategia
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-700">
-                        <span class="text-red-600 font-bold">📸</span> @karinasia.q.n
-                    </div>
-                </div>
             </div>
             <div class="lg:w-2/3">
-                <h2 class="text-3xl font-extrabold text-blue-900 mb-6 underline decoration-red-600">Autoridad Académica</h2>
-                <div class="space-y-4 text-gray-700 text-lg">
-                    <p>Soy la <span class="font-bold text-blue-900">Dra. Karina Quintero Navas</span>, fundadora de Mentórea Asesores y Directora Editorial del sello Ave Fénix.</p>
-                    <p>Con un <span class="font-bold text-red-600">Doctorado/PhD en Innovaciones Educativas</span> y más de <span class="font-bold text-blue-900">30 años de experiencia académica</span>, soy experta en entrelazar la ciencia y el arte para guiar investigaciones en Educación, Comunicación y Gestión Humana.</p>
-                    <p>Mi trayectoria me ha permitido acompañar a cientos de tesistas en la superación de bloqueos metodológicos, transformando procesos complejos en resultados de alto impacto científico.</p>
-                </div>
-                <div class="mt-8 grid grid-cols-2 gap-4">
-                    <div class="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-900">
-                        <div class="text-blue-900 font-bold text-2xl">30+</div>
-                        <div class="text-sm text-gray-600 font-medium">Años de Trayectoria</div>
-                    </div>
-                    <div class="bg-red-50 p-4 rounded-xl border-l-4 border-red-600">
-                        <div class="text-red-600 font-bold text-2xl">PhD</div>
-                        <div class="text-sm text-gray-600 font-medium">Innovación Educativa</div>
-                    </div>
+                <h2 class="text-3xl font-extrabold text-blue-900 mb-6 underline decoration-red-600 uppercase">Autoridad Académica e Investigativa</h2>
+                <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
+                    <p>Soy la <span class="font-bold text-blue-900">Dra. Karina Quintero Navas</span>, fundadora de Mentórea Asesores y creadora del innovador método <span class="italic font-semibold text-red-600">"Educomunicación: ciencia y arte"</span>.</p>
+                    <p>Con un <span class="font-bold text-blue-900 text-xl">Doctorado/PhD en Innovaciones Educativas</span> y una sólida trayectoria de más de <span class="font-bold text-red-600 text-xl">30 años de labor académica e investigación</span>, he dedicado mi carrera a la premisa de educar para comunicar con excelencia.</p>
+                    <p>Mi experiencia abarca 15 años en áreas profesionales de arte, televisión y comunicación, lo que me permite hoy integrar la sensibilidad estética con el rigor metodológico. He tenido el honor de guiar a más de <span class="font-bold text-blue-900">50 tesistas</span> hacia la culminación exitosa de sus grados académicos.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SECCIÓN BIBLIOTECA -->
+    <!-- BIBLIOTECA -->
     <div id="biblioteca" class="tab-content max-w-7xl mx-auto py-16 px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-black text-blue-900 mb-2">Biblioteca Ave Fénix</h2>
-            <p class="text-gray-500 font-medium">Obras de referencia para el investigador moderno</p>
-            <div class="h-1.5 w-24 bg-red-600 mx-auto mt-4 rounded-full"></div>
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-black text-blue-900 uppercase">Biblioteca Ave Fénix</h2>
+            <p class="text-gray-500 font-medium">Obras originales de la Dra. Karina Quintero</p>
+            <div class="h-1 w-24 bg-red-600 mx-auto mt-4 rounded-full"></div>
         </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-            <!-- Libro 1 -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Libro sobre el Método -->
             <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-blue-900 to-blue-700">
-                    <h4 class="book-title text-2xl font-black italic">Metodología de Investigación en Ciencias Sociales</h4>
+                <div class="book-cover bg-gradient-to-br from-red-900 to-red-700">
+                    <h4 class="book-title text-2xl font-black italic uppercase">Educomunicación: Ciencia y Arte</h4>
                 </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Guía definitiva para estructurar investigaciones con rigor científico.</p>
-                    <div class="text-2xl font-black text-blue-900 mb-2">$20.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-blue-900 text-white py-2 rounded-lg font-bold hover:bg-blue-800 transition">Comprar</button>
+                <div class="p-6 flex-grow">
+                    <p class="text-gray-600 text-sm mb-4">El fundamento teórico y práctico de mi método pedagógico. Próxima publicación.</p>
+                    <div class="text-xl font-black text-red-700">Próximamente</div>
                 </div>
             </div>
-
-            <!-- Libro 2 -->
-            <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-red-800 to-red-600">
-                    <h4 class="book-title text-2xl font-black italic">Métodos innovadores entre la ciencia y el arte</h4>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Integración de la estética y la creatividad en el método científico.</p>
-                    <div class="text-2xl font-black text-red-700 mb-2">$20.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-red-700 text-white py-2 rounded-lg font-bold hover:bg-red-800 transition">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Libro 3 -->
-            <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-teal-700 to-teal-500">
-                    <h4 class="book-title text-2xl font-black italic">Creatividad, innovación e investigación educativa</h4>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Herramientas clave para transformar el aula mediante la investigación.</p>
-                    <div class="text-2xl font-black text-teal-800 mb-2">$20.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-teal-700 text-white py-2 rounded-lg font-bold hover:bg-teal-600 transition">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Libro 4 -->
-            <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-indigo-800 to-purple-700">
-                    <h4 class="book-title text-2xl font-black italic">Creatividad, una cronología de creencias</h4>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Un viaje histórico y psicológico sobre el proceso creativo.</p>
-                    <div class="text-2xl font-black text-indigo-900 mb-2">$20.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-indigo-800 text-white py-2 rounded-lg font-bold hover:bg-indigo-700 transition">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Libro 5 -->
-            <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-gray-900 to-gray-700">
-                    <h4 class="book-title text-2xl font-black italic">El síndrome del impostor en la Tesis</h4>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Supera las barreras psicológicas en tu carrera académica.</p>
-                    <div class="text-2xl font-black text-gray-900 mb-2">$20.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-gray-800 text-white py-2 rounded-lg font-bold hover:bg-gray-700 transition">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Libro 6 -->
-            <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-red-900 to-orange-800">
-                    <h4 class="book-title text-2xl font-black italic">Escribe tu tesis sin ahogarte</h4>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Estrategias de productividad y redacción académica sin estrés.</p>
-                    <div class="text-2xl font-black text-red-900 mb-2">$20.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-red-900 text-white py-2 rounded-lg font-bold hover:bg-red-800 transition">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Libro 7 -->
-            <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-blue-800 to-cyan-700">
-                    <h4 class="book-title text-2xl font-black italic">De la entrega a la defensa</h4>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Domina el arte de la oratoria y la defensa ante el jurado.</p>
-                    <div class="text-2xl font-black text-blue-900 mb-2">$20.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-blue-800 text-white py-2 rounded-lg font-bold hover:bg-blue-700 transition">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Libro 8 -->
-            <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-amber-600 to-yellow-500">
-                    <h4 class="book-title text-2xl font-black italic">Liderazgo y Ética en la Investigación Doctoral</h4>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Formación integral con valores y visión de impacto social.</p>
-                    <div class="text-2xl font-black text-amber-900 mb-2">$20.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-amber-600 text-white py-2 rounded-lg font-bold hover:bg-amber-700 transition">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Libro 9: IA -->
-            <div class="book-card bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                <div class="book-cover bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900">
-                    <h4 class="book-title text-2xl font-black italic">Metodología Aumentada. Cómo integrar la IA en cada fase.</h4>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <p class="text-gray-600 text-sm mb-4">Potencia tu investigación con herramientas de Inteligencia Artificial.</p>
-                    <div class="text-2xl font-black text-purple-900 mb-2">$25.00</div>
-                    <button onclick="showTab('pagos')" class="w-full bg-purple-900 text-white py-2 rounded-lg font-bold hover:bg-purple-800 transition">Comprar</button>
-                </div>
-            </div>
+            <!-- Más libros pueden agregarse aquí -->
         </div>
     </div>
 
-    <!-- SECCIÓN TESTIMONIOS -->
-    <div id="testimonios" class="tab-content max-w-7xl mx-auto py-16 px-4 text-center">
-        <h2 class="text-3xl font-bold text-blue-900 mb-12">Historias de Éxito</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow border italic">
-                <img src="tesista1.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100 shadow-sm" onerror="this.src='https://ui-avatars.com/api/?name=Tesista+1&background=eee'">
-                "La Dra. Karina fue clave en mi proceso doctoral. Su método es infalible."
-                <p class="font-bold not-italic mt-4 text-sm text-blue-900 uppercase tracking-tighter">- Dr. Ricardo Suárez</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow border italic">
-                <img src="tesista2.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-red-100 shadow-sm" onerror="this.src='https://ui-avatars.com/api/?name=Tesista+2&background=eee'">
-                "Excelente apoyo editorial y humano. Ave Fénix le dio vida a mi investigación."
-                <p class="font-bold not-italic mt-4 text-sm text-red-700 uppercase tracking-tighter">- MSc. Elena Padrón</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow border italic">
-                <img src="tesista3.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-yellow-100 shadow-sm" onerror="this.src='https://ui-avatars.com/api/?name=Tesista+3&background=eee'">
-                "Metodología pura aplicada al arte. Entendió perfectamente mi visión creativa."
-                <p class="font-bold not-italic mt-4 text-sm text-yellow-600 uppercase tracking-tighter">- Ing. Carlos Vargas</p>
-            </div>
+    <!-- SECCIÓN INVERSIÓN (PAQUETES) -->
+    <div id="pagos" class="tab-content max-w-7xl mx-auto py-16 px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-blue-900 uppercase">Planes de Mentoría</h2>
+            <p class="text-gray-600">Inversión en excelencia para su futuro profesional</p>
+        </div>
+        <div class="bg-blue-900 text-white p-12 rounded-3xl text-center">
+            <h3 class="text-2xl font-bold mb-4">Sección en Configuración</h3>
+            <p class="mb-8 opacity-80 italic italic">"La excelencia no es un acto, sino un hábito de investigación constante."</p>
+            <p>Dra. Karina, aquí diseñaremos su tabla de costos en el siguiente bloque.</p>
         </div>
     </div>
 
-    <!-- SECCIÓN PAGOS -->
-    <div id="pagos" class="tab-content max-w-4xl mx-auto py-16 px-4 text-center">
-        <h2 class="text-3xl font-bold text-blue-900 mb-10">Canales de Pago</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="p-10 bg-white rounded-3xl shadow-xl border-t-8 border-yellow-500">
-                <div class="text-yellow-600 font-black text-2xl mb-4">Binance Pay</div>
-                <button onclick="alert('Binance ID: 48190279')" class="bg-yellow-500 text-white px-8 py-3 rounded-full font-bold w-full hover:bg-yellow-600 transition shadow-lg">Ver Pay ID</button>
-            </div>
-            <div class="p-10 bg-white rounded-3xl shadow-xl border-t-8 border-red-600">
-                <div class="text-red-600 font-black text-2xl mb-4">Pago Móvil</div>
-                <button onclick="alert('Banco de Venezuela (0102)\nCédula: 11.819.593\nTeléfono: 0412-5462081')" class="bg-red-600 text-white px-8 py-3 rounded-full font-bold w-full hover:bg-red-700 transition shadow-lg">Ver Datos</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECCIÓN REGISTRO -->
-    <div id="registro" class="tab-content max-w-4xl mx-auto py-16 px-4">
-        <div class="bg-white rounded-3xl shadow-2xl border p-6 text-center">
-            <h2 class="text-2xl font-bold text-blue-900 mb-4">Registro y Diagnóstico</h2>
-            <p class="mb-6">Inicie su proceso de asesoría cargando su propuesta.</p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe-Tu_ID_Real/viewform?embedded=true" width="100%" height="700" frameborder="0">Cargando...</iframe>
-        </div>
-    </div>
-
+    <!-- PIE DE PÁGINA CON PROTECCIÓN LEGAL -->
     <footer class="bg-gray-900 text-white py-16 text-center mt-20">
         <div class="max-w-4xl mx-auto px-4">
-            <img src="IMG_20260319_152251_656.jpg" class="h-24 mx-auto mb-6 brightness-110 grayscale-0" onerror="this.src='https://ui-avatars.com/api/?name=M+A&background=1a2a6c'">
-            <p class="font-bold text-xl mb-1">Dra. Karina Quintero Navas</p>
-            <p class="text-red-500 font-medium mb-4">PhD en Innovaciones Educativas | Directora Mentórea</p>
-            <div class="flex flex-col gap-1 text-sm text-gray-400 mb-8">
-                <p>📧 mentoreaasesores@gmail.com</p>
-                <p>📸 @metodolog_iay_estrategia | @karinasia.q.n</p>
+            <img src="IMG_20260319_152251_656.jpg" class="h-24 mx-auto mb-6 brightness-110">
+            <p class="font-bold text-xl mb-1 uppercase">Dra. Karina Quintero Navas</p>
+            <p class="text-red-500 font-medium mb-4">PhD en Innovaciones Educativas | Autora del Método Educomunicación</p>
+            
+            <div class="bg-gray-800 p-6 rounded-2xl text-xs text-gray-400 mb-8 border border-gray-700 text-left">
+                <p class="font-bold text-red-500 mb-2 uppercase tracking-widest text-center">Aviso Legal y Protección de Autoría</p>
+                <p class="leading-relaxed">© 2026 Todos los derechos reservados. El método <span class="text-gray-200">"Educomunicación: ciencia y arte"</span>, el nombre <span class="text-gray-200">Mentórea Asesores</span> y todos los contenidos intelectuales de este sitio son propiedad exclusiva de la <span class="text-gray-200">Dra. Karina Quintero Navas</span>.</p>
+                <p class="mt-2 leading-relaxed">Se prohíbe terminantemente la reproducción parcial o total, el plagio de metodologías o el uso de su nombre para fines comerciales sin autorización expresa y por escrito de la autora. Incurrir en estas acciones conlleva responsabilidades legales internacionales en materia de propiedad intelectual.</p>
             </div>
+
             <div class="h-px bg-gray-800 w-full mb-8"></div>
-            <p class="text-sm text-gray-500">© 2026 | Ave Fénix Editores</p>
-            <div class="mt-6 flex justify-center space-x-6">
-                <a href="https://mentoreaasesores.blogspot.com" target="_blank" class="text-blue-400 hover:text-blue-300 transition underline font-medium">Blog Oficial</a>
-            </div>
+            <p class="text-sm text-gray-500">Mentórea Asesores | Ave Fénix Editores</p>
+            <p class="text-xs text-gray-600 mt-2">mentoreaasesores@gmail.com</p>
         </div>
     </footer>
 
